@@ -52,7 +52,7 @@
     "axios": "^0.19.0",
     "core-js": "^3.3.4",
     "dropzone": "^5.5.1",
-    "handlebars": "^4.4.5",
+    "handlebars": "^4.5.3",
     "swiper": "^5.2.0"
   }
 }
