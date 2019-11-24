@@ -36,7 +36,7 @@
 }
 
 .swiper-bg::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -47,6 +47,7 @@
 .swiper-slide__img {
   position: absolute;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -58,6 +59,7 @@
   max-width: 672px;
   min-width: 200px;
   height: 50%;
+  width: 100%;
 }
 
 .choose-btn-wrapper {
@@ -70,7 +72,7 @@
 
 .choose-btn {
   padding: 6px 56px;
-  font-family: 'Quicksand';
+  font-family: "Quicksand";
   font-size: 36px;
   border: none;
   border-radius: 20px;

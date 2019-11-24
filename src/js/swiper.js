@@ -1,5 +1,4 @@
-import { getUserList } from './api';
-import { postLikedUser } from './api';
+import { getUserList, postLikedUser } from './api';
 import swiperTemplate from '../templates/bg_swiper_template.hbs';
 import 'swiper/css/swiper.min.css';
 import Swiper from 'swiper';
@@ -7,11 +6,12 @@ import PNotify from 'pnotify/dist/es/PNotify.js';
 import PNotifyButtons from 'pnotify/dist/es/PNotifyButtons.js';
 import PNotifyStyleMaterial from 'pnotify/dist/es/PNotifyStyleMaterial.js';
 
-PNotify.defaults.styling = 'material';
-// PNotify.defaults.icons = 'material';
-PNotify.defaults.delay = 3500;
-
 export function createSwiper() {
+  if (!document.querySelector('#MAIN')) return;
+
+  PNotify.defaults.styling = 'material';
+  PNotify.defaults.delay = 3500;
+
   let pageNumber = 1;
   let people = [];
 
