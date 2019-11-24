@@ -106,13 +106,13 @@
 }
 
 .mach__people-icon {
-  position: relative;
+  /* position: relative; */
   margin-right: 20px;
   width: 50px;
   height: 60px;
   cursor: pointer;
 }
-.mach__people-icon::after {
+/* .mach__people-icon::after {
   content: "";
   width: 20px;
   height: 20px;
@@ -121,8 +121,8 @@
   background-repeat: no-repeat;
   right: 0;
   bottom: 0;
-  /* transform: translateX(-100%); */
-}
+  transform: translateX(-100%);
+} */
 .mach__people-main {
   font-family: "Quicksand", sans-serif;
   color: rgb(185, 153, 91);

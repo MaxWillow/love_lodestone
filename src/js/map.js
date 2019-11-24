@@ -48,15 +48,22 @@ class MAP {
   }
 }
 export async function initMap() {
+  if (refs.body.id !== 'mapHTML') return;
+
   let map = await new MAP({ dom: refs.map, options: optionMap });
   await map.addMap();
 
   const { data } = await getMapData();
   const markers = data.map(e => {
-    e.geo_location.split(', ');
+    let result = e;
+
+    if (typeof e.geo_location === 'string') {
+      result = e.geo_location.split(', ');
+    }
+
     e.geo_location = {
-      lat: Number(e.geo_location[0]),
-      lng: Number(e.geo_location[1]),
+      lat: Number(result[0]),
+      lng: Number(result[1]),
     };
     return e;
   });
@@ -68,11 +75,9 @@ export async function initMap() {
       return (acc += machPeopleMapHbs(e));
     }, '');
 
-    console.dir(result);
     dom.innerHTML = result;
   };
-  console.dir(refs.machPeopleUl);
-  console.dir(markers);
+
   await getMachPeopleMap(refs.machPeopleUl);
   await map.addMarker(markers);
   refs.machPeopleUl.addEventListener('click', e => {
@@ -81,5 +86,24 @@ export async function initMap() {
     const lng = Number(e.target.dataset.lng);
     const cord = { lat, lng };
     map.map.panTo(cord);
+  });
+
+  refs.menu.addEventListener('click', e => {
+    const likes = e.target.closest('.js-likes');
+    const peoples = e.target.closest('.js-peoples');
+    const exit = e.target.closest('.js-exit');
+    if (exit.classList.contains('js-exit')) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('isLogin');
+      document.location.replace('./login-page.html');
+    }
+    if (peoples.classList.contains('js-peoples')) {
+      document.location.replace('./main-screen.html');
+    }
+    if (likes.classList.contains('js-likes')) {
+    }
+  });
+  const ps = new PerfectScrollbar('.section-scroll', {
+    suppressScrollX: true,
   });
 }
