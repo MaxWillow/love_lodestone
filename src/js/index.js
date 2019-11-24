@@ -1,8 +1,11 @@
-import '../css/styles.css';
+import '../css/mapStyles.css';
+import '../css/header.css';
+import '../css/footer.css';
+import '../css/general.css';
 import { initMap } from './map.js';
-const body = document.querySelector('body');
+import refs from './refs.js';
 
-if (body.id === 'mapHTML') {
+if (refs.body.id === 'mapHTML') {
   initMap();
 }
 const ps = new PerfectScrollbar('.section-scroll', {

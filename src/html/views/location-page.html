@@ -16,7 +16,7 @@
 
 <body id="mapHTML">
 
-    <!-- <%= require('raw-loader!./../partials/header.html').default %> -->
+    <%= require('raw-loader!./../partials/header.html').default %>
     <div class="wrapperMap">
         <div class="map__content">
             <h4 class="map__content-title">Your matches</h4>
@@ -29,6 +29,7 @@
         <div id="map">
         </div>
     </div>
+    <%= require('raw-loader!./../partials/footer.html').default %>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7Zkwv8ZHein66BAALTpWsJAQorKjiTlw"></script>
 </body>
 

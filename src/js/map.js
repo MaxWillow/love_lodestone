@@ -1,13 +1,8 @@
 import optionMap from './optionMap.js';
-import { getMachPeopleMap } from './machPeopleMap.js';
+import machPeopleMapHbs from '../templates/machPeopleMap.hbs';
+import getMapData from './getMapData.js';
 import refs from './refs.js';
-import peoples from './mock/skip.json';
-//-----// refs
-const markers = peoples.mathced_list.map(e => {
-  e.geo_location = { lat: e.geo_location[0], lng: e.geo_location[1] };
-  return e;
-});
-//-----// Class map
+
 class MAP {
   constructor({ options, dom }) {
     this.options = options;
@@ -17,10 +12,11 @@ class MAP {
     this.map = new google.maps.Map(this.dom, this.options);
   }
   addMarker(markers) {
+    console.dir(markers);
     if (markers.length === 0) {
       return;
     }
-    if (markers.length > 1) {
+    if (markers.length > 0) {
       markers.forEach(element => {
         let infowindow = new google.maps.InfoWindow({
           content: `
@@ -54,6 +50,29 @@ class MAP {
 export async function initMap() {
   let map = await new MAP({ dom: refs.map, options: optionMap });
   await map.addMap();
+
+  const { data } = await getMapData();
+  const markers = data.map(e => {
+    e.geo_location.split(', ');
+    e.geo_location = {
+      lat: Number(e.geo_location[0]),
+      lng: Number(e.geo_location[1]),
+    };
+    return e;
+  });
+  const getMachPeopleMap = dom => {
+    console.dir(dom);
+    console.dir(markers);
+
+    const result = markers.reduce((acc, e) => {
+      return (acc += machPeopleMapHbs(e));
+    }, '');
+
+    console.dir(result);
+    dom.innerHTML = result;
+  };
+  console.dir(refs.machPeopleUl);
+  console.dir(markers);
   await getMachPeopleMap(refs.machPeopleUl);
   await map.addMarker(markers);
   refs.machPeopleUl.addEventListener('click', e => {
