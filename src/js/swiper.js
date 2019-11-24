@@ -1,10 +1,15 @@
 import { getUserList } from './api';
 import { postLikedUser } from './api';
 import swiperTemplate from '../templates/bg_swiper_template.hbs';
-import PNotify from 'node_modules/pnotify/dist/es/PNotify.js';
-import PNotifyButtons from 'node_modules/pnotify/dist/es/PNotifyButtons.js';
 import 'swiper/css/swiper.min.css';
 import Swiper from 'swiper';
+import PNotify from 'pnotify/dist/es/PNotify.js';
+import PNotifyButtons from 'pnotify/dist/es/PNotifyButtons.js';
+import PNotifyStyleMaterial from 'pnotify/dist/es/PNotifyStyleMaterial.js';
+
+PNotify.defaults.styling = 'material';
+// PNotify.defaults.icons = 'material';
+PNotify.defaults.delay = 3500;
 
 export function createSwiper() {
   let pageNumber = 1;
@@ -107,6 +112,9 @@ export function createSwiper() {
       const { matched } = data;
       console.log(await postLikedUser(likedUserID));
       if (matched) {
+        PNotify.success({
+          text: 'Congratulate with new matching!',
+        });
       }
     }
 

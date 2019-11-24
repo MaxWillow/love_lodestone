@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Quicksand&display=swap"
-      rel="stylesheet"
-    />
-    <title>Main screen</title>
-  </head>
-  <body>
-    <%= require('raw-loader!./../partials/header.html').default %>
-    <section class="swiper-section">
-      <div class="swiper-bg">
-        <div class="swiper-container bg-swiper">
-          <div class="swiper-wrapper js-swiper-wrapper"></div>
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="node_modules/material-design-icons/iconfont/material-icons.css" />
+  <title>Main screen</title>
+</head>
+
+<body>
+  <%= require('raw-loader!./../partials/header.html').default %>
+  <section class="swiper-section">
+    <div class="swiper-bg">
+      <div class="swiper-container bg-swiper">
+        <div class="swiper-wrapper js-swiper-wrapper"></div>
       </div>
-      <div class="section-wrapper">
-        <div class="swiper-container main-swiper main-swiper-container">
-          <div class="swiper-wrapper js-swiper-wrapper"></div>
-          <!-- <div class="swiper-button-next"></div> -->
-        </div>
-        <div class="choose-btn-wrapper">
-          <button type="submit" class="choose-btn choose-btn__like">
-            Like
-          </button>
-          <button type="submit" class="choose-btn choose-btn__next">
-            Next
-          </button>
-        </div>
+    </div>
+    <div class="section-wrapper">
+      <div class="swiper-container main-swiper main-swiper-container">
+        <div class="swiper-wrapper js-swiper-wrapper"></div>
+        <!-- <div class="swiper-button-next"></div> -->
       </div>
-    </section>
-    <%= require('raw-loader!./../partials/footer.html').default %>
-  </body>
+      <div class="choose-btn-wrapper">
+        <button type="submit" class="choose-btn choose-btn__like">
+          Like
+        </button>
+        <button type="submit" class="choose-btn choose-btn__next">
+          Next
+        </button>
+      </div>
+    </div>
+  </section>
+  <%= require('raw-loader!./../partials/footer.html').default %>
+</body>
+
 </html>
