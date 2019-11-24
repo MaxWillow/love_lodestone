@@ -26,12 +26,14 @@
   z-index: 10;
   position: absolute;
   width: 90px;
-  height: calc(100% - 36px);
+  height: calc(100% - 32px);
   left: 0;
-  top: 16px;
+  top: 0;
+  margin: 16px 0;
   padding-bottom: 20px;
 }
 .map__content-title {
+  font-family: "Quicksand", sans-serif;
   color: rgb(185, 153, 91);
   font-size: 16px;
   height: 60px;
@@ -84,7 +86,7 @@
 }
 .mach__people-li::before {
   position: absolute;
-  content: '';
+  content: "";
   left: 0;
   width: 10px;
   height: 70px;
@@ -102,13 +104,27 @@
   display: flex;
   justify-content: space-between;
 }
+
 .mach__people-icon {
+  position: relative;
   margin-right: 20px;
   width: 50px;
   height: 60px;
   cursor: pointer;
 }
+.mach__people-icon::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background-image: url("../img/marker.svg");
+  background-repeat: no-repeat;
+  right: 0;
+  bottom: 0;
+  /* transform: translateX(-100%); */
+}
 .mach__people-main {
+  font-family: "Quicksand", sans-serif;
   color: rgb(185, 153, 91);
   display: none;
   flex-direction: column;
@@ -140,9 +156,11 @@
 }
 @media screen and (min-width: 768px) and (min-height: 400px) {
   .map__content {
-    height: calc(100% - 125px);
+    /* height: calc(100% - 125px); */
+    height: calc(100% - 80px);
+    margin: 40px 0;
     width: 320px;
-    top: 40px;
+    top: 0;
   }
   .map__content-title {
     font-size: 24px;

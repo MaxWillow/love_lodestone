@@ -1,6 +1,7 @@
 export default {
   center: { lat: 50.466511, lng: 30.627141 },
   zoom: 12,
+  minZoom: 5,
   zoomControl: false,
   mapTypeControl: false,
   scaleControl: false,
