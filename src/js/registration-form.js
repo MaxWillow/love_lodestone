@@ -49,4 +49,5 @@ refs.form.addEventListener('submit', e => {
     });
 
   refs.form.reset();
+  document.location.replace('./add-photo.html');
 });
