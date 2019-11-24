@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const paths = require('../utils/paths');
 const path = require('path');
-const fs = require('fs')
+const fs = require('fs');
 
 function generateHtmlPlugins(templateDir, isProduction) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
@@ -14,22 +14,22 @@ function generateHtmlPlugins(templateDir, isProduction) {
 
     const minify = {
       collapseWhitespace: true,
-        removeComments: true,
-        removeRedundantAttributes: true,
-        removeScriptTypeAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        useShortDoctype: true,
-    }
+      removeComments: true,
+      removeRedundantAttributes: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true,
+      useShortDoctype: true,
+    };
     const htmlWebpackPluginSettings = {
       filename: `${name}.html`,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
       // inject: false,
-    }
+    };
 
-    if(isProduction) htmlWebpackPluginSettings.minify = minify
+    if (isProduction) htmlWebpackPluginSettings.minify = minify;
 
-    return new HtmlWebpackPlugin(htmlWebpackPluginSettings)
-  })
+    return new HtmlWebpackPlugin(htmlWebpackPluginSettings);
+  });
 }
 
 const htmlPlugins = generateHtmlPlugins(`${paths.SRC_DIR}/html/views`);
@@ -53,7 +53,7 @@ module.exports = env => ({
     publicPath: '',
     historyApiFallback: true,
     compress: true,
-    port: 4040,
+    port: 4060,
     noInfo: true,
     quiet: true,
     clientLogLevel: 'warning',
