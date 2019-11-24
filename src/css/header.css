@@ -1,0 +1,35 @@
+.header {
+  background-color: #171717;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 100;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  min-height: 70px;
+  justify-content: space-between;
+}
+
+.nav__link {
+  display: block;
+  padding: 0 10px;
+}
+
+.link-wrapper {
+  display: flex;
+}
+
+.nav__link--counter {
+  position: relative;
+}
+
+.nav__link--likes-count {
+  position: absolute;
+  left: 42%;
+  top: 12%;
+  color: #171717;
+}
