@@ -2,6 +2,15 @@ import optionMap from './optionMap.js';
 import machPeopleMapHbs from '../templates/machPeopleMap.hbs';
 import getMapData from './getMapData.js';
 import refs from './refs.js';
+console.dir(getMapData())
+import {
+  setLocal,
+  getLocal,
+  removeLocal,
+  verificationLocal,
+} from './localStorage';
+verificationLocal();
+const isLogin = getLocal().isLogin;
 
 class MAP {
   constructor({ options, dom }) {
@@ -12,7 +21,6 @@ class MAP {
     this.map = new google.maps.Map(this.dom, this.options);
   }
   addMarker(markers) {
-    console.dir(markers);
     if (markers.length === 0) {
       return;
     }
@@ -49,29 +57,38 @@ class MAP {
 }
 export async function initMap() {
   if (refs.body.id !== 'mapHTML') return;
-
+  if (!isLogin) {
+    document.location.replace('./login.html');
+    return;
+  }
   let map = await new MAP({ dom: refs.map, options: optionMap });
   await map.addMap();
-
   const { data } = await getMapData();
-  const markers = data.map(e => {
+  const cleanData= data.filter(geo => geo.geo_location.length >= 1).filter(img=>img.image_list.length>=1)
+  console.dir(cleanData)
+  const markers = cleanData.map(e => {
     let result = e;
-
+    // if (e.geo_location < 2) return;
     if (typeof e.geo_location === 'string') {
       result = e.geo_location.split(', ');
-    }
-
-    e.geo_location = {
-      lat: Number(result[0]),
-      lng: Number(result[1]),
+      e.geo_location = {
+        lat: Number(result[0]),
+        lng: Number(result[1]),
+      };
     };
-    return e;
+    e.geo_location = {
+      lat: e.geo_location[0],
+      lng: e.geo_location[1],
+    }
+    return e
   });
   const getMachPeopleMap = dom => {
-    console.dir(dom);
-    console.dir(markers);
-
+console.dir(markers)
     const result = markers.reduce((acc, e) => {
+    e.geo_location = {
+      lat: e.geo_location.lat,
+      lng: e.geo_location.lng,
+    };
       return (acc += machPeopleMapHbs(e));
     }, '');
 
@@ -88,21 +105,6 @@ export async function initMap() {
     map.map.panTo(cord);
   });
 
-  refs.menu.addEventListener('click', e => {
-    const likes = e.target.closest('.js-likes');
-    const peoples = e.target.closest('.js-peoples');
-    const exit = e.target.closest('.js-exit');
-    if (exit.classList.contains('js-exit')) {
-      localStorage.removeItem('token');
-      localStorage.removeItem('isLogin');
-      document.location.replace('./login-page.html');
-    }
-    if (peoples.classList.contains('js-peoples')) {
-      document.location.replace('./main-screen.html');
-    }
-    if (likes.classList.contains('js-likes')) {
-    }
-  });
   const ps = new PerfectScrollbar('.section-scroll', {
     suppressScrollX: true,
   });

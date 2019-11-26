@@ -1,11 +1,20 @@
+import '../css/styles-registr-add.css';
+import addPhoto from './add-photo';
+import registrationForm from './registration-form';
+import '../css/styles-login.css';
 import '../css/mapStyles.css';
 import '../css/header.css';
 import '../css/footer.css';
 import '../css/general.css';
+import '../css/main_screen.css';
+import { loginLauncher } from './login';
+import { createSwiper } from './swiper';
 import { initMap } from './map.js';
-localStorage.setItem('isLogin', 'true');
-localStorage.setItem(
-  'token',
-  'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiI1NTU2NjIiLCJhZ2UiOjE1LCJpYXQiOjE1NzQ1MTk3Mzh9.0G84wB4wfKyAKlHKOpDrp8vwBGtKK_uq4AnEtx8B3SUCqxDVa6PN-v60ykK8i0LnJCjzUB69fxLGAr9xW7oOhg',
-);
+import { menuClick } from './menu';
+
+menuClick();
+createSwiper();
 initMap();
+loginLauncher();
+addPhoto();
+registrationForm();
