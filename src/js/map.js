@@ -2,7 +2,7 @@ import optionMap from './optionMap.js';
 import machPeopleMapHbs from '../templates/machPeopleMap.hbs';
 import getMapData from './getMapData.js';
 import refs from './refs.js';
-console.dir(getMapData())
+console.dir(getMapData());
 import {
   setLocal,
   getLocal,
@@ -64,8 +64,10 @@ export async function initMap() {
   let map = await new MAP({ dom: refs.map, options: optionMap });
   await map.addMap();
   const { data } = await getMapData();
-  const cleanData= data.filter(geo => geo.geo_location.length >= 1).filter(img=>img.image_list.length>=1)
-  console.dir(cleanData)
+  const cleanData = data
+    .filter(geo => geo.geo_location.length >= 1)
+    .filter(img => img.image_list.length >= 1);
+  // console.dir(cleanData)
   const markers = cleanData.map(e => {
     let result = e;
     // if (e.geo_location < 2) return;
@@ -75,20 +77,20 @@ export async function initMap() {
         lat: Number(result[0]),
         lng: Number(result[1]),
       };
-    };
+    }
     e.geo_location = {
       lat: e.geo_location[0],
       lng: e.geo_location[1],
-    }
-    return e
+    };
+    return e;
   });
   const getMachPeopleMap = dom => {
-console.dir(markers)
+    // console.dir(markers)
     const result = markers.reduce((acc, e) => {
-    e.geo_location = {
-      lat: e.geo_location.lat,
-      lng: e.geo_location.lng,
-    };
+      e.geo_location = {
+        lat: e.geo_location.lat,
+        lng: e.geo_location.lng,
+      };
       return (acc += machPeopleMapHbs(e));
     }, '');
 

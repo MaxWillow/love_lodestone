@@ -4,7 +4,7 @@ import PNotifyStyleMaterial from 'pnotify/dist/es/PNotifyStyleMaterial.js';
 import 'pnotify/dist/PNotifyBrightTheme.css';
 import getGeoPosition from './getGeoPosition';
 import { setLocal, getLocal, removeLocal } from './localStorage';
-export default function() {
+export default function () {
   if (!document.querySelector('#REGISTRATION')) return;
   //-----// position
   const onGetPositionSuccess = location => {
@@ -51,26 +51,25 @@ export default function() {
       .post('https://venify.herokuapp.com/user/register', {
         password: refs.password.value,
         login: refs.userLogin.value,
-        age: refs.userAge.value,
+        age: Number(refs.userAge.value),
         phone_number: refs.userTel.value,
         geo_location: myGeoPosition,
         gender: maleGroup.value,
       })
-      .then(function(response) {
+      .then(function (response) {
         setLocal({
           isLogin: true,
           token: response.data.token,
-        })
+        });
         document.location.replace('./upload-photo.html');
 
         PNotify.notice({
           text: 'Registration success!',
         });
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
-
     refs.form.reset();
   });
 }

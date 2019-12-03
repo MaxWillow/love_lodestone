@@ -5,6 +5,7 @@ import Swiper from 'swiper';
 import PNotify from 'pnotify/dist/es/PNotify.js';
 import PNotifyButtons from 'pnotify/dist/es/PNotifyButtons.js';
 import PNotifyStyleMaterial from 'pnotify/dist/es/PNotifyStyleMaterial.js';
+import refs from './refs';
 import {
   setLocal,
   getLocal,
@@ -33,16 +34,20 @@ export function createSwiper() {
 
   const addUsers = (userList, data) => {
     const ids = data.map(elem => elem._id);
+    console.log('userList', userList);
+    console.log('data', data);
+    console.log('ids', ids);
+
     return [...userList, ...ids];
   };
 
   // Запрос данных
   const renderUserList = async () => {
     const { data } = await getUserList();
-    
-    console.dir(data);
-    people = addUsers([], data);
-    console.log('people', people);
+
+    // await console.dir('getUserList - data', data);
+    await (people = addUsers([], data));
+    // await console.log('people', people);
 
     const bgSwiper = new Swiper('.bg-swiper', {
       speed: 400,
@@ -65,7 +70,7 @@ export function createSwiper() {
         nextButton: '.swiper-button-next',
       },
       on: {
-        init: function() {
+        init: function () {
           console.log('swiper initialized');
         },
       },
@@ -73,11 +78,12 @@ export function createSwiper() {
 
     mainSwiper.on('slideChange', async () => {
       const { slides, activeIndex } = mainSwiper;
-      console.log(mainSwiper);
+      // console.log(mainSwiper);
 
       if (slides.length - activeIndex <= 3) {
         pageNumber += 1;
         const { data } = await getUserList(pageNumber);
+        // console.dir(data);
         addUsers(people, data);
         addSlidesToSlider(bgSwiper, data);
         addSlidesToSlider(mainSwiper, data);
@@ -89,7 +95,7 @@ export function createSwiper() {
       //   bgSwiper.removeSlide(0);
       //   bgSwiper.update();
       //   mainSwiper.update();
-      console.log(mainSwiper.slides.length);
+      // console.log(mainSwiper.slides.length);
     });
 
     addSlidesToSlider(bgSwiper, data);
@@ -104,11 +110,6 @@ export function createSwiper() {
     // const imgURL = swiperImg.getAttribute('src');
     // console.log(imgURL);
 
-    const refs = {
-      likeBtn: document.querySelector('.choose-btn__like'),
-      nextBtn: document.querySelector('.choose-btn__next'),
-    };
-
     const slideNext = () => {
       mainSwiper.slideNext();
       bgSwiper.slideNext();
@@ -121,7 +122,8 @@ export function createSwiper() {
       const likedUserID = people[mainSwiper.realIndex];
       const { data } = await postLikedUser(likedUserID);
       const { matched } = data;
-      console.log(await postLikedUser(likedUserID));
+      console.log(likedUserID);
+      console.log(people);
       if (matched) {
         PNotify.success({
           text: 'Congratulate with new matching!',
