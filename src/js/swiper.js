@@ -14,6 +14,7 @@ import {
 } from './localStorage';
 verificationLocal();
 const isLogin = getLocal().isLogin;
+
 export function createSwiper() {
   if (!document.querySelector('#MAIN')) return;
   if (!isLogin) {
@@ -46,7 +47,7 @@ export function createSwiper() {
     const { data } = await getUserList();
 
     // await console.dir('getUserList - data', data);
-    await (people = addUsers([], data));
+    await (people = addUsers(people, data));
     // await console.log('people', people);
 
     const bgSwiper = new Swiper('.bg-swiper', {
@@ -78,7 +79,8 @@ export function createSwiper() {
 
     mainSwiper.on('slideChange', async () => {
       const { slides, activeIndex } = mainSwiper;
-      // console.log(mainSwiper);
+      console.log(slides, activeIndex);
+      console.log(mainSwiper);
 
       if (slides.length - activeIndex <= 3) {
         pageNumber += 1;
@@ -90,25 +92,8 @@ export function createSwiper() {
       }
     });
 
-    mainSwiper.on('slideNextTransitionEnd', e => {
-      //   mainSwiper.removeSlide(0);
-      //   bgSwiper.removeSlide(0);
-      //   bgSwiper.update();
-      //   mainSwiper.update();
-      // console.log(mainSwiper.slides.length);
-    });
-
     addSlidesToSlider(bgSwiper, data);
     addSlidesToSlider(mainSwiper, data);
-
-    // const swiperWrapper = document.querySelector('.js-swiper-wrapper');
-    // swiperWrapper.innerHTML = res;
-    // const swiperSection = swiperWrapper.closest('.swiper-section');
-    // console.dir(swiperSection);
-    // const swiperImg = document.querySelector('.swiper-slide__img');
-    // console.dir(swiperImg);
-    // const imgURL = swiperImg.getAttribute('src');
-    // console.log(imgURL);
 
     const slideNext = () => {
       mainSwiper.slideNext();
@@ -118,21 +103,28 @@ export function createSwiper() {
     refs.likeBtn.addEventListener('click', handleLikeClick);
 
     async function handleLikeClick() {
-      slideNext();
       const likedUserID = people[mainSwiper.realIndex];
+      console.log('mainSwiper.realIndex', mainSwiper.realIndex)
       const { data } = await postLikedUser(likedUserID);
       const { matched } = data;
-      console.log(likedUserID);
-      console.log(people);
+      console.log('likedUserID', likedUserID);
+      console.log('people', people);
+
+
       if (matched) {
         PNotify.success({
           text: 'Congratulate with new matching!',
         });
       }
+
+      slideNext();
     }
 
     refs.nextBtn.addEventListener('click', handleNextClick);
     function handleNextClick() {
+      if (data.length === 0) {
+        refs.nextBtn.setAttribute('disabled', true)
+      }
       slideNext();
     }
   };
