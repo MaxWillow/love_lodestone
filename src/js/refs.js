@@ -6,4 +6,10 @@ export default {
   menu: document.querySelector('.js-menu'),
   likeBtn: document.querySelector('.choose-btn__like'),
   nextBtn: document.querySelector('.choose-btn__next'),
+  form: document.querySelector('.form'),
+  password: document.querySelector('#user-password'),
+  userLogin: document.querySelector('#user-login'),
+  userAge: document.querySelector('#user-age'),
+  userTel: document.querySelector('#user-tel'),
+  fields: document.querySelectorAll('.field'),
 };

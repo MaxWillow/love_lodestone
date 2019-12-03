@@ -10,14 +10,18 @@ import {
   removeLocal,
   verificationLocal,
 } from './localStorage';
+
 verificationLocal();
 const isLogin = getLocal().isLogin;
+PNotify.defaults.delay = 2000;
+
 export function loginLauncher() {
   if (!document.querySelector('#LOGINPAGE')) return;
 
   if (refs.body.id === 'LOGINPAGE') {
     if (isLogin) {
       document.location.replace('./index.html');
+      return
     }
   }
 
@@ -27,11 +31,11 @@ export function loginLauncher() {
     const inputPassword = document.querySelector('#password');
     const redirect = document.querySelector('.click');
 
-    // inputPassword.addEventListener('blur', e => {
-    //   if (e.target.value.length <= 3) {
-    //     e.target.classList.add('validate-error');
-    //   }
-    // });
+    inputPassword.addEventListener('blur', e => {
+      if (e.target.value.length <= 3) {
+        e.target.classList.add('validate-error');
+      }
+    });
 
     submitForm.addEventListener('submit', async e => {
       e.preventDefault();
@@ -47,7 +51,7 @@ export function loginLauncher() {
         setLocal({ isLogin: true, token: userData.data.token });
         document.location.replace('./index.html');
       } catch (error) {
-        PNotify.error(error);
+        PNotify.error('Введены неверные данные для входа.');
         // document.location.replace('./login-page.html');
       }
     });

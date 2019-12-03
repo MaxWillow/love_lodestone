@@ -19,6 +19,7 @@ export function createSwiper() {
   if (!document.querySelector('#MAIN')) return;
   if (!isLogin) {
     document.location.replace('/login.html');
+    return;
   }
   PNotify.defaults.styling = 'material';
   PNotify.defaults.delay = 3500;

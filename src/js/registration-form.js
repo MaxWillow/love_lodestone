@@ -3,7 +3,9 @@ import PNotify from '../../node_modules/pnotify/dist/es/PNotify';
 import PNotifyStyleMaterial from 'pnotify/dist/es/PNotifyStyleMaterial.js';
 import 'pnotify/dist/PNotifyBrightTheme.css';
 import getGeoPosition from './getGeoPosition';
+import refs from './refs';
 import { setLocal, getLocal, removeLocal } from './localStorage';
+
 export default function () {
   if (!document.querySelector('#REGISTRATION')) return;
   //-----// position
@@ -12,7 +14,7 @@ export default function () {
     return [position.latitude, position.longitude];
   };
   const onGetPositionError = error => {
-    PNotify.error('Нет прав доступа к геопозиции, регистрация не возможна.');
+    PNotify.error('Нет прав доступа к геопозиции, регистрация невозможна. Включите, пожалуйста, геолокацию.');
   };
   let myGeoPosition = 0;
   getGeoPosition()
@@ -21,15 +23,6 @@ export default function () {
       myGeoPosition = coordinates;
     })
     .catch(onGetPositionError);
-
-  const refs = {
-    form: document.querySelector('.form'),
-    password: document.querySelector('#user-password'),
-    userLogin: document.querySelector('#user-login'),
-    userAge: document.querySelector('#user-age'),
-    userTel: document.querySelector('#user-tel'),
-    fields: document.querySelectorAll('.field'),
-  };
 
   let maleGroup = '';
 

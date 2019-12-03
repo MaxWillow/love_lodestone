@@ -48,13 +48,17 @@ class MAP {
           },
         });
 
-        marker.addListener('click', function() {
+        marker.addListener('click', function () {
           infowindow.open(this.map, marker);
         });
       });
     }
   }
 }
+
+
+
+
 export async function initMap() {
   if (refs.body.id !== 'mapHTML') return;
   if (!isLogin) {
