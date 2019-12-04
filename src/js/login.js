@@ -47,7 +47,10 @@ export function loginLauncher() {
         setLocal({ isLogin: true, token: userData.data.token });
         document.location.replace('./index.html');
       } catch (error) {
-        PNotify.error(error);
+        PNotify.error({
+          text: 'Invalid login or password',
+        });
+
         // document.location.replace('./login-page.html');
       }
     });

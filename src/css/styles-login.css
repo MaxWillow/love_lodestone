@@ -64,14 +64,18 @@ body {
   border: 2px solid #b9995b;
   margin-top: 10px;
   max-width: 100%;
+  font-family: 'Quicksand', sans-serif;
   /* width: 466px; */
   min-height: 50px;
   border-radius: 10px;
   color: #b9995b;
+  font-size: 20px;
+  padding-left: 20px;
 }
 .form-input__password {
   background-color: #1b1b1b;
   border: 2px solid #b9995b;
+  font-family: 'Quicksand', sans-serif;
   margin-top: 10px;
   margin-bottom: 10px;
   /* width: 466px; */
@@ -79,6 +83,8 @@ body {
   height: 50px;
   border-radius: 10px;
   color: #b9995b;
+  font-size: 20px;
+  padding-left: 20px;
 }
 .form-button {
   margin-top: 70px;
