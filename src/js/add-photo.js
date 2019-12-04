@@ -14,7 +14,6 @@ import {
 verificationLocal();
 const isLogin = getLocal().isLogin;
 
-
 export default function() {
   if (!document.querySelector('#ADDPHOTO')) return;
 
