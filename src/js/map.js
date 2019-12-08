@@ -2,7 +2,6 @@ import optionMap from './optionMap.js';
 import machPeopleMapHbs from '../templates/machPeopleMap.hbs';
 import getMapData from './getMapData.js';
 import refs from './refs.js';
-console.dir(getMapData());
 import {
   setLocal,
   getLocal,
@@ -55,10 +54,6 @@ class MAP {
     }
   }
 }
-
-
-
-
 export async function initMap() {
   if (refs.body.id !== 'mapHTML') return;
   if (!isLogin) {

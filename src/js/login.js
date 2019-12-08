@@ -10,32 +10,34 @@ import {
   removeLocal,
   verificationLocal,
 } from './localStorage';
-
 verificationLocal();
 const isLogin = getLocal().isLogin;
-PNotify.defaults.delay = 2000;
-
 export function loginLauncher() {
   if (!document.querySelector('#LOGINPAGE')) return;
 
   if (refs.body.id === 'LOGINPAGE') {
     if (isLogin) {
       document.location.replace('./index.html');
-      return
     }
   }
-
+  const validation = () => {
+    refs.inputPassword.addEventListener('input', e => {
+      e.target.value.length < 8 ?
+        e.target.classList.add('validate-error') :
+        e.target.classList.remove('validate-error');
+    }
+    );
+  }
+  const validationSubmit = () => {
+    refs.inputPassword.classList.add('validate-error')
+    PNotify.error({
+      text: 'Invalid login or password',
+    });
+  }
   const submitForm = document.querySelector('.regist-form');
   if (submitForm) {
-    const inputLogin = document.querySelector('#form-input');
-    const inputPassword = document.querySelector('#password');
-    const redirect = document.querySelector('.click');
 
-    inputPassword.addEventListener('blur', e => {
-      if (e.target.value.length <= 3) {
-        e.target.classList.add('validate-error');
-      }
-    });
+    validation()
 
     submitForm.addEventListener('submit', async e => {
       e.preventDefault();
@@ -44,16 +46,20 @@ export function loginLauncher() {
         const userData = await axios.post(
           'https://venify.herokuapp.com/user/login',
           {
-            password: inputPassword.value,
-            login: inputLogin.value,
+            password: refs.inputPassword.value,
+            login: refs.inputLogin.value,
           },
         );
         setLocal({ isLogin: true, token: userData.data.token });
         document.location.replace('./index.html');
       } catch (error) {
-        PNotify.error('Введены неверные данные для входа.');
-        // document.location.replace('./login-page.html');
+        validationSubmit()
       }
     });
   }
 }
+
+/*
+Поправить валидацию
+
+*/

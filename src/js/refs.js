@@ -12,4 +12,6 @@ export default {
   userAge: document.querySelector('#user-age'),
   userTel: document.querySelector('#user-tel'),
   fields: document.querySelectorAll('.field'),
+  inputLogin: document.querySelector('#form-input'),
+  inputPassword: document.querySelector('#password'),
 };

@@ -11,22 +11,8 @@ html {
 body {
   background-color: #1b1b1b;
 }
-.container {
-  /* margin: 0 auto;
-  text-align: center; */
-  /* max-width: 600px; */
-  /* color: #b9995b;
-  font-family: 'Quicksand', sans-serif; */
-}
-/* img {
-  width: 734px;
-  height: 100px;
-} */
 .logo-login a {
-  /* background-image: url(../img/logo-icon.png); */
   display: inline-block;
-  /* width: 72px;
-  height: 100px; */
   margin: 0 auto;
   text-align: center;
   margin-top: 1%;
@@ -35,7 +21,6 @@ body {
   margin-top: 30px;
   margin-bottom: 20px;
   padding: 0;
-  /* text-align: center; */
   font-size: 48px;
   color: #b9995b;
   font-family: 'Quicksand', sans-serif;
@@ -45,13 +30,10 @@ body {
   margin: 0 auto;
   padding: 10px;
   text-align: center;
-
-  /* max-width: 600px; */
   color: #b9995b;
   font-family: 'Quicksand', sans-serif;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   width: 466px;
 }
 .input-name {
@@ -64,25 +46,28 @@ body {
   border: 2px solid #b9995b;
   margin-top: 10px;
   max-width: 100%;
-  /* width: 466px; */
+  font-family: 'Quicksand', sans-serif;
   min-height: 50px;
   border-radius: 10px;
   color: #b9995b;
+  font-size: 20px;
+  padding-left: 20px;
 }
 .form-input__password {
   background-color: #1b1b1b;
   border: 2px solid #b9995b;
+  font-family: 'Quicksand', sans-serif;
   margin-top: 10px;
   margin-bottom: 10px;
-  /* width: 466px; */
   max-width: 100%;
   height: 50px;
   border-radius: 10px;
   color: #b9995b;
+  font-size: 20px;
+  padding-left: 20px;
 }
 .form-button {
   margin-top: 70px;
-  /* width: 475px; */
   max-width: 100%;
   height: 69px;
   border: none;
@@ -96,10 +81,6 @@ body {
   font-weight: 800;
 }
 
-/* #password:invalid {
-  border-color: #9c250b;
-} */
-
 .input-name {
   font-size: 18px;
 }
@@ -108,7 +89,6 @@ body {
   text-align: right;
 }
 .click a {
-  /* margin-right: 10%; */
   color: #b9995b;
   font-family: 'Quicksand', sans-serif;
 }
@@ -124,10 +104,6 @@ body {
   color: #9c250b;
 }
 
-/* registration form */
-body {
-  background-color: #1b1b1b;
-}
 
 /* FORM */
 #my-awesome-dropzone {
