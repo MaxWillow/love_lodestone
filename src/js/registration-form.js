@@ -4,7 +4,7 @@ import PNotifyStyleMaterial from 'pnotify/dist/es/PNotifyStyleMaterial.js';
 import 'pnotify/dist/PNotifyBrightTheme.css';
 import getGeoPosition from './getGeoPosition';
 import { setLocal, getLocal, removeLocal } from './localStorage';
-export default function () {
+export default function() {
   if (!document.querySelector('#REGISTRATION')) return;
   //-----// position
   const onGetPositionSuccess = location => {
@@ -14,7 +14,7 @@ export default function () {
   const onGetPositionError = error => {
     PNotify.error('Нет прав доступа к геопозиции, регистрация не возможна.');
   };
-  let myGeoPosition = 0;
+  let myGeoPosition;
   getGeoPosition()
     .then(onGetPositionSuccess)
     .then(coordinates => {
@@ -34,25 +34,25 @@ export default function () {
   // Validation satrt
   let maleGroup = '';
 
-  refs.userLogin.onblur = function () {
+  refs.userLogin.onblur = function() {
     refs.userLogin.value.length < 3
       ? refs.userLogin.classList.add('empty') ||
-      PNotify.notice({
-        text: 'Name must contain at least 3 characters',
-      })
+        PNotify.notice({
+          text: 'Name must contain at least 3 characters',
+        })
       : refs.userLogin.classList.remove('empty');
   };
 
-  refs.userTel.onblur = function () {
+  refs.userTel.onblur = function() {
     refs.userTel.value.length !== 10 || !refs.userTel.value.replace(/\D/g, '')
       ? refs.userTel.classList.add('empty') ||
-      PNotify.notice({
-        text: 'Number must contain at least 10 symbols and only numbers',
-      })
+        PNotify.notice({
+          text: 'Number must contain at least 10 symbols and only numbers',
+        })
       : refs.userTel.classList.remove('empty');
   };
 
-  refs.password.onblur = function () {
+  refs.password.onblur = function() {
     if (refs.password.value.length < 8) {
       refs.password.classList.add('empty') ||
         PNotify.notice({
@@ -96,7 +96,7 @@ export default function () {
         geo_location: myGeoPosition,
         gender: maleGroup.value,
       })
-      .then(function (response) {
+      .then(function(response) {
         setLocal({
           isLogin: true,
           token: response.data.token,
@@ -107,7 +107,7 @@ export default function () {
           text: 'Registration success!',
         });
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
     refs.form.reset();
