@@ -72,7 +72,7 @@ export function createSwiper() {
         nextButton: '.swiper-button-next',
       },
       on: {
-        init: function () {
+        init: function() {
           console.log('swiper initialized');
         },
       },
@@ -105,12 +105,11 @@ export function createSwiper() {
 
     async function handleLikeClick() {
       const likedUserID = people[mainSwiper.realIndex];
-      console.log('mainSwiper.realIndex', mainSwiper.realIndex)
+      console.log('mainSwiper.realIndex', mainSwiper.realIndex);
       const { data } = await postLikedUser(likedUserID);
       const { matched } = data;
       console.log('likedUserID', likedUserID);
       console.log('people', people);
-
 
       if (matched) {
         PNotify.success({
@@ -124,7 +123,7 @@ export function createSwiper() {
     refs.nextBtn.addEventListener('click', handleNextClick);
     function handleNextClick() {
       if (data.length === 0) {
-        refs.nextBtn.setAttribute('disabled', true)
+        refs.nextBtn.setAttribute('disabled', true);
       }
       slideNext();
     }
