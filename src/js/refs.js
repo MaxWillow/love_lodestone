@@ -1,0 +1,17 @@
+export default {
+  map: document.getElementById('map'),
+  machPeopleUl: document.querySelector('.mach__people-ul'),
+  body: document.querySelector('body'),
+  exit: document.querySelector('body'),
+  menu: document.querySelector('.js-menu'),
+  likeBtn: document.querySelector('.choose-btn__like'),
+  nextBtn: document.querySelector('.choose-btn__next'),
+  form: document.querySelector('.form'),
+  password: document.querySelector('#user-password'),
+  userLogin: document.querySelector('#user-login'),
+  userAge: document.querySelector('#user-age'),
+  userTel: document.querySelector('#user-tel'),
+  fields: document.querySelectorAll('.field'),
+  inputLogin: document.querySelector('#form-input'),
+  inputPassword: document.querySelector('#password'),
+};

@@ -1,0 +1,20 @@
+import '../css/styles-registr-add.css';
+import addPhoto from './add-photo';
+import registrationForm from './registration-form';
+import '../css/styles-login.css';
+import '../css/mapStyles.css';
+import '../css/header.css';
+import '../css/footer.css';
+import '../css/general.css';
+import '../css/main_screen.css';
+import { loginLauncher } from './login';
+import { createSwiper } from './swiper';
+import { initMap } from './map.js';
+import { menuClick } from './menu';
+
+menuClick();
+createSwiper();
+initMap();
+loginLauncher();
+addPhoto();
+registrationForm();

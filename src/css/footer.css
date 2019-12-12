@@ -1,0 +1,15 @@
+
+.footer {
+  display: flex;
+  align-items: center;
+  text-align: right;
+  min-height: 40px;
+  background-color: #171717;
+}
+
+.footer__legal {
+  font-family: 'Quicksand';
+  font-size: 14px;
+  color: #b9995b;
+}
+
