@@ -3,13 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const paths = require('../utils/paths');
 const path = require('path');
-const fs = require('fs')
+const fs = require('fs');
 const htmlPlugins = generateHtmlPlugins(`${paths.SRC_DIR}/html/views`);
 
 module.exports = env => ({
   devtool: 'source-map',
   output: {
-    filename: '[name].[contenthash].js',
+    filename: './love_lodestone/[name].[contenthash].js',
   },
   optimization: {
     moduleIds: 'hashed',
@@ -58,16 +58,15 @@ function generateHtmlPlugins(templateDir, isProduction) {
       removeScriptTypeAttributes: true,
       removeStyleLinkTypeAttributes: true,
       useShortDoctype: true,
-    }
+    };
     const htmlWebpackPluginSettings = {
       filename: `${name}.html`,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
       // inject: false,
-    }
+    };
 
-    if(isProduction) htmlWebpackPluginSettings.minify = minify
+    if (isProduction) htmlWebpackPluginSettings.minify = minify;
 
-    return new HtmlWebpackPlugin(htmlWebpackPluginSettings)
-  })
+    return new HtmlWebpackPlugin(htmlWebpackPluginSettings);
+  });
 }
-
