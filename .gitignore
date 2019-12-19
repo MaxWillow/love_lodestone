@@ -1,7 +1,7 @@
 # wscode
 .idea
 # production
-/build
+# /build
 
 # Logs
 logs
