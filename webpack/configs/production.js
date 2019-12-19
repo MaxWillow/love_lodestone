@@ -9,7 +9,7 @@ const htmlPlugins = generateHtmlPlugins(`${paths.SRC_DIR}/html/views`);
 module.exports = env => ({
   devtool: 'source-map',
   output: {
-    filename: './love_lodestone/[name].[contenthash].js',
+    filename: '[name].[contenthash].js',
   },
   optimization: {
     moduleIds: 'hashed',

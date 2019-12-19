@@ -22,22 +22,20 @@ export function loginLauncher() {
   }
   const validation = () => {
     refs.inputPassword.addEventListener('input', e => {
-      e.target.value.length < 8 ?
-        e.target.classList.add('validate-error') :
-        e.target.classList.remove('validate-error');
-    }
-    );
-  }
+      e.target.value.length < 8
+        ? e.target.classList.add('validate-error')
+        : e.target.classList.remove('validate-error');
+    });
+  };
   const validationSubmit = () => {
-    refs.inputPassword.classList.add('validate-error')
+    refs.inputPassword.classList.add('validate-error');
     PNotify.error({
       text: 'Invalid login or password',
     });
-  }
+  };
   const submitForm = document.querySelector('.regist-form');
   if (submitForm) {
-
-    validation()
+    validation();
 
     submitForm.addEventListener('submit', async e => {
       e.preventDefault();
@@ -53,7 +51,7 @@ export function loginLauncher() {
         setLocal({ isLogin: true, token: userData.data.token });
         document.location.replace('./index.html');
       } catch (error) {
-        validationSubmit()
+        validationSubmit();
       }
     });
   }
