@@ -18,7 +18,7 @@ const isLogin = getLocal().isLogin;
 export function createSwiper() {
   if (!document.querySelector('#MAIN')) return;
   if (!isLogin) {
-    document.location.replace('/login.html');
+    document.location.replace('/love_lodestone/login.html');
     return;
   }
   PNotify.defaults.styling = 'material';

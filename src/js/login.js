@@ -17,7 +17,7 @@ export function loginLauncher() {
 
   if (refs.body.id === 'LOGINPAGE') {
     if (isLogin) {
-      document.location.replace('./index.html');
+      document.location.replace('/love_lodestone/index.html');
     }
   }
   const validation = () => {
@@ -49,7 +49,7 @@ export function loginLauncher() {
           },
         );
         setLocal({ isLogin: true, token: userData.data.token });
-        document.location.replace('./index.html');
+        document.location.replace('/love_lodestone/index.html');
       } catch (error) {
         validationSubmit();
       }

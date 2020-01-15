@@ -47,7 +47,7 @@ class MAP {
           },
         });
 
-        marker.addListener('click', function () {
+        marker.addListener('click', function() {
           infowindow.open(this.map, marker);
         });
       });
@@ -57,7 +57,7 @@ class MAP {
 export async function initMap() {
   if (refs.body.id !== 'mapHTML') return;
   if (!isLogin) {
-    document.location.replace('./login.html');
+    document.location.replace('/love_lodestone/login.html');
     return;
   }
   let map = await new MAP({ dom: refs.map, options: optionMap });

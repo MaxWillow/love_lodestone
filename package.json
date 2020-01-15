@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/luxplanjay/webpack-starter-kit/issues"
   },
-  "homepage": "https://maxwillow.github.io/love_lodestone/build",
+  "homepage": "https://maxwillow.github.io/love_lodestone",
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-class-properties": "^7.5.5",

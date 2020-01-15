@@ -46,7 +46,7 @@ export default function() {
     PNotify.notice({
       text: 'Photo downloaded.',
     });
-    window.location.replace('./index.html');
+    window.location.replace('/love_lodestone/index.html');
   });
 
   dropzone.on('error', function(file) {

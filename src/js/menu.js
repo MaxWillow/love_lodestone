@@ -8,13 +8,13 @@ export function menuClick() {
     const exit = e.target.closest('.js-exit');
     if (exit.classList.contains('js-exit')) {
       removeLocal();
-      document.location.replace('./login.html');
+      document.location.replace('/love_lodestone/login.html');
     }
     if (peoples.classList.contains('js-peoples')) {
-      document.location.replace('./index.html');
+      document.location.replace('/love_lodestone/index.html');
     }
     if (likes.classList.contains('js-likes')) {
-      document.location.replace('./location-page.html');
+      document.location.replace('/love_lodestone/location-page.html');
     }
   });
 }

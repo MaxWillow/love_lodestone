@@ -101,7 +101,7 @@ export default function() {
           isLogin: true,
           token: response.data.token,
         });
-        document.location.replace('./upload-photo.html');
+        document.location.replace('/love_lodestone/upload-photo.html');
 
         PNotify.notice({
           text: 'Registration success!',
